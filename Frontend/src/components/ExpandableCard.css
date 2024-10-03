@@ -8,12 +8,13 @@
   position: relative; /* Make sure the card is positioned relative */
 }
 
-.expandable-card:hover {
+/* .expandable-card:hover {
   transform: scale(1.02);
-}
+} */
 
 .expandable-card.expanded {
   height: auto; /* Allows the card to expand */
+  
   background-color: #8f95d6;
   color: aliceblue;
 }
