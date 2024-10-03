@@ -1,0 +1,30 @@
+.expandable-card {
+  cursor: pointer;
+  transition: height 0.3s ease, transform 0.3s ease;
+  
+  color: rgb(0, 0, 0);
+  margin: 10px auto; /* Center the card */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative; /* Make sure the card is positioned relative */
+}
+
+.expandable-card:hover {
+  transform: scale(1.02);
+}
+
+.expandable-card.expanded {
+  height: auto; /* Allows the card to expand */
+  background-color: #8f95d6;
+  color: aliceblue;
+}
+
+.expanded-content {
+  margin-top: 10px;
+  cursor: pointer; /* Change cursor for content to indicate it's clickable */
+  
+}
+
+
+
+
+

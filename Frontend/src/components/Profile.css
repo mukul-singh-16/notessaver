@@ -1,0 +1,13 @@
+.profile {
+    margin-top: 20px;
+  }
+  
+  .profile .MuiCard-root {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color */
+  }
+  
+  .profile .MuiButton-root {
+    background-color: #6200ea; /* Custom button color */
+  }
+  
