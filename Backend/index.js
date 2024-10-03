@@ -16,8 +16,8 @@ app.get("/",(req,res)=>{
   res.send("hello working fine");
 })
 
-// app.use('/api/users', require('./routes/userRoutes'));
-// app.use('/api/notes', require('./routes/noteRoute'));
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/notes', require('./routes/noteRoute'));
 
 
 
