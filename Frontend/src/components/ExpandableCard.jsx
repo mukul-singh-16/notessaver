@@ -7,28 +7,39 @@ import './ExpandableCard.css';
 const ExpandableCard = ({ title, content, isExpanded, onClick }) => {
   const [flashMessage, setFlashMessage] = useState(false); // State to show flash message
 
-  // Handle Copy to Clipboard
-  const handleCopy = () => {
-    // Create a temporary element to parse the rich text content
-    const tempDiv = document.createElement('div');
-    tempDiv.innerHTML = content;
 
-    // Convert HTML content to formatted plain text
-    let plainText = tempDiv.innerHTML
-      .replace(/<\/p>/g, '\n\n') // Replace closing </p> with double line break
-      .replace(/<br\s*[\/]?>/gi, '\n') // Replace <br> tags with single line break
-      .replace(/<\/li>/g, '\n') // Add line break after </li>
-      .replace(/<\/?[^>]+(>|$)/g, '') // Remove all remaining HTML tags
-      .replace(/^\s*[\r\n]/gm, ''); // Trim empty lines
 
-    // Use navigator.clipboard to write the plain text to the clipboard
-    navigator.clipboard.writeText(plainText).then(() => {
-      console.log('Formatted text copied to clipboard');
-      setFlashMessage(true); // Show flash message on successful copy
-    }).catch(err => {
-      console.error('Could not copy text: ', err);
-    });
-  };
+
+  
+// Handle Copy to Clipboard
+const handleCopy = () => {
+  // Create a temporary element to parse the rich text content
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = content;
+
+  // Get the plain text with same formatting as displayed
+  const plainText = tempDiv.innerHTML
+    .replace(/&nbsp;/g, ' ') // Replace non-breaking spaces with regular spaces
+    .replace(/<\/p>/g, '\n\n') // Replace closing </p> with double line breaks
+    .replace(/<br\s*\/?>/gi, '\n') // Replace <br> tags with single line breaks
+    .replace(/<\/li>/g, '\n') // Add line break after </li>
+    .replace(/<\/?[^>]+(>|$)/g, '') // Remove all remaining HTML tags
+    .replace(/\n+/g, '\n') // Normalize multiple newlines to a single newline
+    .trim(); // Trim leading/trailing whitespace
+
+  // Use navigator.clipboard to write the plain text to the clipboard
+  navigator.clipboard.writeText(plainText).then(() => {
+    console.log('Formatted text copied to clipboard');
+    setFlashMessage(true); // Show flash message on successful copy
+  }).catch(err => {
+    console.error('Could not copy text: ', err);
+  });
+};
+
+
+
+
+
 
   // Handle closing of the flash message
   const handleCloseFlashMessage = (event, reason) => {
