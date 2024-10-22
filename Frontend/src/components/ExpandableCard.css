@@ -16,10 +16,11 @@
   height: auto; /* Allows the card to expand */
   
   background-color: #8f95d6;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
 }
 
 .expanded-content {
+  color: black;
   margin-top: 10px;
   cursor: pointer; /* Change cursor for content to indicate it's clickable */
   

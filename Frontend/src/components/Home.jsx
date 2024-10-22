@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Container, TextField, Grid } from '@mui/material';
+import { Container, TextField, Grid, Grid2 } from '@mui/material';
 import ExpandableCard from './ExpandableCard';
 import axios from 'axios'; // Import axios for making HTTP requests
 
@@ -83,18 +83,18 @@ const Home = () => {
         {loading ? (
           <p>Loading notes...</p>
         ) : (
-          <Grid container spacing={2} justifyContent="center">
+          <Grid2 container spacing={2} justifyContent="center">
             {filteredNotes.map((note, index) => (
-              <Grid item key={note._id || note.id}>
+              <Grid2 item key={note._id || note.id}>
                 <ExpandableCard
                   title={note.title}
                   content={note.content}
                   isExpanded={expandedCard === index}
                   onClick={() => handleCardClick(index)}
                 />
-              </Grid>
+              </Grid2>
             ))}
-          </Grid>
+          </Grid2>
         )}
       </Container>
     </motion.div>
