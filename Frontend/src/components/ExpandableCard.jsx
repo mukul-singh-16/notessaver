@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // import React, { useState } from 'react';
 // import { Card, CardContent, Typography, IconButton, Dialog, DialogTitle, DialogContent, DialogActions, Button } from '@mui/material';
 // import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -207,11 +208,11 @@ const ExpandableCard = ({  title, content, isExpanded, onClick }) => {
 
   return (
     <Card
-      onClick={onClick}
-      className={`expandable-card ${isExpanded ? 'expanded' : ''}`}
-      style={{ width: '70vw', display: 'flex', flexDirection: 'row', position: 'relative', background: "#202341", color: "white" }}
+      // onClick={onClick}
+      // className={`expandable-card ${isExpanded ? 'expanded' : ''}`}
+      style={{ width: '80vw', display: 'flex', flexDirection: 'row', position: 'relative', background: "#202341", color: "white" }}
     >
-      <CardContent style={{ flex: 1 }}>
+      {/* <CardContent style={{ flex: 1 }}>
         {isExpanded ? (
           <>
             <Typography variant="h5">{title}</Typography>
@@ -223,7 +224,21 @@ const ExpandableCard = ({  title, content, isExpanded, onClick }) => {
         ) : (
           <Typography variant="h5">{title}</Typography>
         )}
-      </CardContent>
+      </CardContent> */}
+
+      <CardContent
+      className={`expandable-card ${isExpanded ? 'expanded' : ''}`}
+      style={{ flex: 1 }}>
+      <div onClick={onClick} style={{ cursor: 'pointer' }}>
+        <Typography variant="h5">{isExpanded ? `${title} ` : `${title} `}</Typography>
+      </div>
+      {isExpanded && (
+        <div
+          dangerouslySetInnerHTML={{ __html: content }}
+          style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', color: 'white', textAlign: 'left', lineHeight: '1.5' }}
+        />
+      )}
+    </CardContent>
 
       {/* Copy Button */}
       <IconButton

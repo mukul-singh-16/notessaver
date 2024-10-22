@@ -55,23 +55,24 @@ const Mycards = ({ id, title, content, settitle, setcontent, isExpanded, onClick
 
   return (
     <Card
-      onClick={onClick}
-      className={`expandable-card ${isExpanded ? 'expanded' : ''}`}
-      style={{ width: '70vw', display: 'flex', flexDirection: 'row', position: 'relative', background: "#202341", color: "white" }}
+     
+      style={{ width: '80vw', display: 'flex', flexDirection: 'row', position: 'relative', background: "#202341", color: "white" }}
     >
-      <CardContent style={{ flex: 1 }}>
-        {isExpanded ? (
-          <>
-            <Typography variant="h5">{title}</Typography>
-            <div
-              dangerouslySetInnerHTML={{ __html: richTextContent }}
-              style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', color: 'white', textAlign: 'left', lineHeight: '1.5' }}
-            />
-          </>
-        ) : (
-          <Typography variant="h5">{title}</Typography>
-        )}
-      </CardContent>
+      <CardContent
+      className={`expandable-card ${isExpanded ? 'expanded' : ''}`}
+      style={{ flex: 1 }}
+    >
+      <div onClick={onClick} style={{ cursor: 'pointer' }}>
+        <Typography variant="h5">{isExpanded ? `${title} ` : `${title} `}</Typography>
+      </div>
+      {isExpanded && (
+        <div
+          dangerouslySetInnerHTML={{ __html: richTextContent }}
+          style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word', color: 'white', textAlign: 'left', lineHeight: '1.5' }}
+        />
+      )}
+    </CardContent>
+
 
       {/* Copy Button */}
       <IconButton

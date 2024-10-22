@@ -57,7 +57,7 @@ const MyNotes = () => {
     try {
       await axios.delete(import.meta.env.VITE_SERVER_URL+`/api/notes/${id}`, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`, // Replace with your JWT
+          Authorization: `Bearer ${localStorage.getItem('token')}`, 
         },
       });
       setNotes((prevNotes) => prevNotes.filter(note => note._id !== id)); // Update state to remove the note
