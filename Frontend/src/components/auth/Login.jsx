@@ -35,6 +35,28 @@ const Login = () => {
     }
   };
 
+  const handleLoginasmukul = async () => {
+    try {
+      // Sending POST request to login API
+      const response = await axios.post(import.meta.env.VITE_SERVER_URL+'/api/users/login', {
+        email:"mukul1singh23@gmail.com", // Changed from username to email
+        password:"12345",
+      });
+
+      // If login is successful, navigate to the home page
+      if (response.status === 200) {
+        setFlashMessage({ message: 'Login Successful!', type: 'success' });
+        localStorage.setItem('token', response.data.token); // Store token (if provided)
+        setTimeout(() => navigate('/'), 2000); // Navigate to home page after 2 seconds
+      }
+    } catch (error) {
+      // Handle login failure
+      setFlashMessage({
+        message: error.response?.data?.message || 'Login failed!',
+        type: 'error',
+      });
+    }
+  };
   return (
     <div className="container">
       <div className="form-box">
@@ -81,9 +103,19 @@ const Login = () => {
                 required // Add required attribute
               />
             </div>
-            <button type="button" className="btn btn-secondary btn-block" onClick={handleLogin}>
-              LOGIN
-            </button>
+
+            <div>
+              <button type="button" className="btn btn-secondary btn-block" onClick={handleLogin}>
+                LOGIN
+              </button>
+            </div>
+            <div>
+              <button type="button" className="btn btn-secondary btn-block" onClick={handleLoginasmukul}>
+                login as mukul
+              </button>
+            </div>
+
+
             <div className="message">
               {/* Optionally add other links or messages */}
             </div>

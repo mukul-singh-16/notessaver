@@ -18,6 +18,8 @@ const handleCopy = () => {
   tempDiv.innerHTML = content;
 
   // Get the plain text with same formatting as displayed
+
+
   const plainText = tempDiv.innerHTML
     .replace(/&nbsp;/g, ' ') // Replace non-breaking spaces with regular spaces
     .replace(/<\/p>/g, '\n\n') // Replace closing </p> with double line breaks
@@ -27,6 +29,7 @@ const handleCopy = () => {
     .replace(/\n+/g, '\n') // Normalize multiple newlines to a single newline
     .trim(); // Trim leading/trailing whitespace
 
+  
   // Use navigator.clipboard to write the plain text to the clipboard
   navigator.clipboard.writeText(plainText).then(() => {
     console.log('Formatted text copied to clipboard');
